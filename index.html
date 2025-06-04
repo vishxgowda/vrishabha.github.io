@@ -12,36 +12,103 @@
       padding: 0;
       background: #f5f5f5;
       color: #333;
+      padding-top: 80px; /* space for fixed navbar */
+      overflow-x: hidden; /* prevent horizontal scroll */
     }
-    header {
+    /* Navigation Bar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
       background-color: #1e3d59;
       color: white;
-      padding: 20px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      z-index: 1000;
+      flex-wrap: wrap;
+      box-sizing: border-box;
     }
-    header img {
-      width: 80px;
-      height: 80px;
+    nav .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-shrink: 1;
+      min-width: 0;
+    }
+    nav .nav-left img {
+      width: 50px;
+      height: 50px;
       object-fit: contain;
-      border-radius: 10px;
-      margin-bottom: 10px;
+      border-radius: 8px;
+      flex-shrink: 0;
     }
+    nav .nav-left .title-container {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+      min-width: 0;
+    }
+    nav .nav-left .title-container h1 {
+      font-size: 1.2rem;
+      margin: 0;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    nav .nav-left .title-container span {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: #b0c4de;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      overflow-x: auto;
+    }
+    nav ul::-webkit-scrollbar {
+      height: 6px;
+    }
+    nav ul::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.3);
+      border-radius: 3px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 8px 12px;
+      transition: background-color 0.3s ease;
+      border-radius: 6px;
+      white-space: nowrap;
+      display: inline-block;
+    }
+    nav ul li a:hover {
+      background-color: #16324f;
+    }
+
+    /* Section */
     .section {
       padding: 40px 20px;
       max-width: 1000px;
       margin: auto;
+      box-sizing: border-box;
+      width: 100%;
     }
     h2 {
       color: #1e3d59;
-    }
-    .services, .contact {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      margin-bottom: 20px;
     }
     .card {
       background: white;
@@ -49,69 +116,143 @@
       border-radius: 12px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       margin-bottom: 20px;
+      word-wrap: break-word;
+      box-sizing: border-box;
+      position: relative;
     }
+    /* WhatsApp button style */
+    .whatsapp-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 15px;
+      background-color: #25D366;
+      color: white;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      font-size: 0.9rem;
+    }
+    .whatsapp-btn:hover {
+      background-color: #1ebe57;
+    }
+
     footer {
       background-color: #1e3d59;
       color: white;
       text-align: center;
       padding: 10px;
+      margin-top: 40px;
     }
-    @media (min-width: 768px) {
-      .services, .contact {
-        flex-direction: row;
-        justify-content: space-between;
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px 15px;
+      }
+      nav ul {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 15px;
+        overflow-x: auto;
       }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="1.png" alt="Vrishaba Properties Logo" />
-    <h1>Vrishaba Properties - Hassan</h1>
-    <p>Your Trusted Real Estate Partner in Hassan</p>
-  </header>
-
-  <section class="section">
-    <h2>About Us</h2>
-    <p>At Vrishaba Properties, we specialize in helping you buy, sell, and rent homes, plots, and commercial spaces in and around Hassan. With deep local expertise and a customer-first approach, we’re here to make your real estate journey smooth and successful.</p>
-  </section>
-
-  <section class="section">
-    <h2>Our Services</h2>
-    <div class="services">
-      <div class="card">
-        <h3>🏠 Buy Properties</h3>
-        <p>We assist you in finding your dream property, whether it’s a home, plot, or commercial space.</p>
-      </div>
-      <div class="card">
-        <h3>💼 Sell Properties</h3>
-        <p>Get the best market price for your property with professional listing and promotion support.</p>
-      </div>
-      <div class="card">
-        <h3>🏢 Rent Properties</h3>
-        <p>Rental solutions for both landlords and tenants with verified property options.</p>
+  <nav>
+    <div class="nav-left">
+      <img src="1.png" alt="Vrishaba Properties Logo" />
+      <div class="title-container">
+        <h1>Vrishaba Properties - Hassan</h1>
+        <span>Your Trusted Real Estate Partner in Hassan</span>
       </div>
     </div>
-  </section>
+    <ul>
+      <li><a href="#listings" onclick="scrollToSection(event, 'listings')">Listings</a></li>
+      <li><a href="#contact" onclick="scrollToSection(event, 'contact')">Contact</a></li>
+    </ul>
+  </nav>
 
-  <section class="section">
+  <!-- Listings Section -->
+  <section id="listings" class="section">
     <h2>Featured Listings</h2>
-    <div class="card">
-      <h3>3BHK House in Vidyanagar</h3>
-      <p>Price: ₹65 Lakhs | Area: 1400 sqft | Near schools and market</p>
-    </div>
-    <!-- Add more cards later -->
+
+  <div class="card">
+  <h3>Sl No 1: Site for Sale near Siddhartha Layout, Belur Road</h3>
+  <p>Plot Area: 1586 sqft | Length: 61 ft | Breadth: 26 ft | Facing: South</p>
+  <a
+    href="https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%20site%20for%20sale%20near%20Siddhartha%20Layout%20on%20Belur%20Road%20(Sl%20No%201)%20listed%20on%20Vrishaba%20Properties."
+    target="_blank"
+    rel="noopener noreferrer"
+    class="whatsapp-btn"
+    >Contact via WhatsApp</a
+  >
+  </div>
+  <div class="card">
+  <h3>Sl No 2: Site for Sale in Vijayanagara Badavane, Belur Road, Hassan</h3>
+  <p>Plot Area: 1200 sqft | Length: 30 ft | Breadth: 40 ft | Facing: Utara</p>
+  <a
+    href="https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%20site%20for%20sale%20in%20Vijayanagara%20Badavane%20on%20Belur%20Road%20Hassan%20(Sl%20No%202)%20listed%20on%20Vrishaba%20Properties."
+    target="_blank"
+    rel="noopener noreferrer"
+    class="whatsapp-btn"
+    >Contact via WhatsApp</a
+  >
+</div>
+<div class="card">
+  <h3>Sl No 3: Agriculture Land for Sale near Shantigrama, Hassan</h3>
+  <p>Area: 11 Guntas</p>
+  <a
+    href="https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%2011%20Guntas%20agriculture%20land%20for%20sale%20near%20Shantigrama%20Hassan%20(Sl%20No%203)%20listed%20on%20Vrishaba%20Properties."
+    target="_blank"
+    rel="noopener noreferrer"
+    class="whatsapp-btn"
+    >Contact via WhatsApp</a
+  >
+</div>
+
+
+
+
   </section>
 
-  <section class="section">
+  <section id="services" class="section">
+    <h2>Our Services</h2>
+    <div class="card">
+      <p>
+        At Vrishaba Properties, we provide comprehensive real estate services tailored to your needs:
+      </p>
+      <ul>
+        <li>Buying and selling residential and commercial properties in Hassan.</li>
+        <li>Property valuation and market analysis to ensure you get the best deal.</li>
+        <li>Legal assistance and documentation support for smooth transactions.</li>
+        <li>Guidance on property investment and rental management.</li>
+        <li>Personalized consultation to help you find your dream home or ideal investment.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
     <h2>Contact Us</h2>
-    <div class="contact">
-      <div class="card">
-        <p><strong>Phone:</strong> 8217816168</p>
-        <p><strong>Email:</strong> vishwanath.gowdabk@gmail.com</p>
-        <p><strong>Office:</strong> GNANADEEKSHA College Building, Hassan</p>
-      </div>
+    <div class="card">
+      <p><strong>Phone:</strong> +91 8217816168</p>
+      <p><strong>Email:</strong> vishwanath.gowdabk@gmail.com</p>
+      <p>
+        <strong>WhatsApp:</strong>
+        <a
+          href="https://wa.me/918217816168?text=Hello%2C%20I%20want%20to%20inquire%20about%20Properties."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="whatsapp-btn"
+          >Chat with us on WhatsApp</a
+        >
+      </p>
     </div>
   </section>
 
@@ -119,5 +260,11 @@
     <p>© 2025 Vrishaba Properties - Hassan. All rights reserved.</p>
   </footer>
 
+  <script>
+    function scrollToSection(event, id) {
+      event.preventDefault();
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
