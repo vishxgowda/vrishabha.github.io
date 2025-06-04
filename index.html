@@ -3,19 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vrishaba Properties - Hassan</title>
+  <title>Vrishabha Properties - Hassan</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
       background: #f5f5f5;
       color: #333;
-      padding-top: 80px; /* space for fixed navbar */
-      overflow-x: hidden; /* prevent horizontal scroll */
+      padding-top: 80px;
+      overflow-x: hidden;
     }
-    /* Navigation Bar */
     nav {
       position: fixed;
       top: 0;
@@ -63,9 +65,6 @@
       font-size: 0.85rem;
       font-weight: 300;
       color: #b0c4de;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
     nav ul {
       list-style: none;
@@ -76,89 +75,47 @@
       flex-wrap: wrap;
       overflow-x: auto;
     }
-    nav ul::-webkit-scrollbar {
-      height: 6px;
-    }
-    nav ul::-webkit-scrollbar-thumb {
-      background: rgba(255,255,255,0.3);
-      border-radius: 3px;
-    }
     nav ul li a {
       color: white;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 8px 12px;
-      transition: background-color 0.3s ease;
-      border-radius: 6px;
-      white-space: nowrap;
-      display: inline-block;
+      font-weight: 500;
     }
-    nav ul li a:hover {
-      background-color: #16324f;
-    }
-
-    /* Section */
     .section {
-      padding: 40px 20px;
-      max-width: 1000px;
+      padding: 60px 20px;
+      max-width: 1200px;
       margin: auto;
-      box-sizing: border-box;
-      width: 100%;
     }
-    h2 {
-      color: #1e3d59;
-      margin-bottom: 20px;
+    .property-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
     }
-    .card {
+    .property-card {
       background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 300px;
       padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
-      word-wrap: break-word;
-      box-sizing: border-box;
-      position: relative;
+      transition: transform 0.2s ease;
     }
-    /* WhatsApp button style */
-    .whatsapp-btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 8px 15px;
-      background-color: #25D366;
-      color: white;
-      font-weight: 600;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-      font-size: 0.9rem;
+    .property-card:hover {
+      transform: scale(1.02);
     }
-    .whatsapp-btn:hover {
-      background-color: #1ebe57;
+    .property-card h3 {
+      margin-top: 0;
     }
-
-    footer {
-      background-color: #1e3d59;
-      color: white;
+    .contact-section {
       text-align: center;
-      padding: 10px;
-      margin-top: 40px;
+      background: #1e3d59;
+      color: white;
+      padding: 60px 20px;
     }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        padding: 10px 15px;
-      }
-      nav ul {
-        width: 100%;
-        justify-content: flex-start;
-        gap: 15px;
-        overflow-x: auto;
-      }
+    .contact-section h2 {
+      margin-bottom: 20px;
+    }
+    .contact-section p {
+      font-size: 1rem;
     }
   </style>
 </head>
@@ -166,185 +123,103 @@
 
   <nav>
     <div class="nav-left">
-      <img src="1.png" alt="Vrishaba Properties Logo" />
+      <img src="1.png" alt="Logo" />
       <div class="title-container">
-        <h1>Vrishaba Properties - Hassan</h1>
-        <span>Your Trusted Real Estate Partner in Hassan</span>
+        <h1>Vrishabha Properties - Hassan</h1>
+        <span>Hassan | Buy & Sell</span>
       </div>
     </div>
     <ul>
-      <li><a href="#listings" onclick="scrollToSection(event, 'listings')">Listings</a></li>
-      <li><a href="#contact" onclick="scrollToSection(event, 'contact')">Contact</a></li>
+      <li><a href="#listings">Listings</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Listings Section -->
-  <section id="listings" class="section">
+
+  <div id="listings" class="section">
     <h2>Featured Listings</h2>
-
-  <div class="card">
-  <h3>Sl No 1: Site for Sale near Siddhartha Layout, Belur Road</h3>
-  <p>Plot Area: 1586 sqft | Length: 61 ft | Breadth: 26 ft | Facing: South</p>
-  <a
-    href="https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%20site%20for%20sale%20near%20Siddhartha%20Layout%20on%20Belur%20Road%20(Sl%20No%201)%20listed%20on%20Vrishaba%20Properties."
-    target="_blank"
-    rel="noopener noreferrer"
-    class="whatsapp-btn"
-    >Contact via WhatsApp</a
-  >
+    <div class="property-container" id="property-container">
+      <!-- Cards will be inserted by JavaScript -->
+    </div>
   </div>
-  <div class="card">
-  <h3>Sl No 2: Site for Sale in Vijayanagara Badavane, Belur Road, Hassan</h3>
-  <p>Plot Area: 1200 sqft | Length: 30 ft | Breadth: 40 ft | Facing: Utara</p>
-  <a
-    href="https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%20site%20for%20sale%20in%20Vijayanagara%20Badavane%20on%20Belur%20Road%20Hassan%20(Sl%20No%202)%20listed%20on%20Vrishaba%20Properties."
-    target="_blank"
-    rel="noopener noreferrer"
-    class="whatsapp-btn"
-    >Contact via WhatsApp</a
-  >
-</div>
-<div class="card">
-  <h3>Sl No 3: Agriculture Land for Sale near Shantigrama, Hassan</h3>
-  <p>Area: 11 Guntas</p>
-  <a
-    href="https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%2011%20Guntas%20agriculture%20land%20for%20sale%20near%20Shantigrama%20Hassan%20(Sl%20No%203)%20listed%20on%20Vrishaba%20Properties."
-    target="_blank"
-    rel="noopener noreferrer"
-    class="whatsapp-btn"
-    >Contact via WhatsApp</a
-  >
-</div>
-<div class="card">
-  <h3>Sl No 4: 4BHK House for Sale in Lakshmi Puram Extension, Penshan Mohalla, Hassan</h3>
-  <p>
-    Plot Area: 2000 sqft | 4 Bedrooms | 2 Bathrooms | 1 Balcony<br>
-    Floors: 2 | Property Age: 10+ Years<br>
-    Width of Facing Road: 36.0 Feet<br>
-    Parking: 1 Covered, 1 Open<br>
-    Water Source: Municipal Corporation
-  </p>
-  <a
-    href="https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%204BHK%20house%20for%20sale%20in%20Lakshmi%20Puram%20Extension%2C%20Penshan%20Mohalla%2C%20Hassan%20(Sl%20No%204)%20listed%20on%20Vrishaba%20Properties."
-    target="_blank"
-    rel="noopener noreferrer"
-    class="whatsapp-btn"
-    >Contact via WhatsApp</a
-  >
-</div>
-<div class="card">
-  <h3>Sl No 5: House for Sale near Bitgowdanahalli</h3>
-  <p>
-    Site: 23x40 ft | West Facing Plot | Door Facing: North<br>
-    Built-up Area: 1070 sqft<br>
-    Ground Floor: 2 BHK<br>
-    First Floor: 1 Room with Attached Toilet
-  </p>
-  <a
-    href="https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%20house%20for%20sale%20near%20Bitgowdanahalli%20(Sl%20No%205)%20listed%20on%20Vrishaba%20Properties."
-    target="_blank"
-    rel="noopener noreferrer"
-    class="whatsapp-btn"
-    >Contact via WhatsApp</a
-  >
-</div>
-<div class="card">
-  <h3>Sl No 6: Site for Sale in Channapattana, Hassan</h3>
-  <p>
-    Plot Area: 2650 sqft (246.19 sq.m.)<br>
-    Dimensions: 75.00 ft (22.86 m) x 35.00 ft (10.67 m)<br>
-    Facing: East | Width of Facing Road: 20.0 Feet
-  </p>
-  <a
-    href="https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%20site%20for%20sale%20in%20Channapattana%2C%20Hassan%20(Sl%20No%206)%20listed%20on%20Vrishaba%20Properties."
-    target="_blank"
-    rel="noopener noreferrer"
-    class="whatsapp-btn"
-    >Contact via WhatsApp</a
-  >
-</div>
-<div class="card">
-  <h3>Sl No 7: 4BHK Independent House/Villa for Sale in Penshan Mohalla, Hassan</h3>
-  <p>
-    4 Bedrooms | 2 Bathrooms<br>
-    Total Floors: 2 | Property Age: 0 to 1 Year<br>
-    Location: Penshan Mohalla, Hassan<br>
-    Note: House is under loan, price can be negotiated
-  </p>
-  <a
-    href="https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%204BHK%20independent%20house%20for%20sale%20in%20Penshan%20Mohalla%2C%20Hassan%20(Sl%20No%207)%20listed%20on%20Vrishaba%20Properties.%20Is%20the%20price%20negotiable%3F"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="whatsapp-btn"
-  >Contact via WhatsApp</a>
-</div>
-<div class="card">
-  <h3>Sl No 8: Site for Sale in Vishveshwaraya Extension, Hassan</h3>
-  <p>
-    Plot Area: 1800 sqft (30x60 ft)<br>
-    Facing: East | Road Width: 30 ft<br>
-    Location: Vishveshwaraya Extension, Hassan
-  </p>
-  <a
-    href="https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%2030x60%20east%20facing%20site%20for%20sale%20in%20Vishveshwaraya%20Extension%2C%20Hassan%20(Sl%20No%208)%20listed%20on%20Vrishaba%20Properties."
-    target="_blank"
-    rel="noopener noreferrer"
-    class="whatsapp-btn"
-  >Contact via WhatsApp</a>
-</div>
 
-
-
-
-
-
-
-  </section>
-
-  <section id="services" class="section">
-    <h2>Our Services</h2>
-    <div class="card">
-      <p>
-        At Vrishaba Properties, we provide comprehensive real estate services tailored to your needs:
-      </p>
-      <ul>
-        <li>Buying and selling residential and commercial properties in Hassan.</li>
-        <li>Property valuation and market analysis to ensure you get the best deal.</li>
-        <li>Legal assistance and documentation support for smooth transactions.</li>
-        <li>Guidance on property investment and rental management.</li>
-        <li>Personalized consultation to help you find your dream home or ideal investment.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="section">
+  <div id="contact" class="contact-section">
     <h2>Contact Us</h2>
-    <div class="card">
-      <p><strong>Phone:</strong> +91 8217816168</p>
-      <p><strong>Email:</strong> vishwanath.gowdabk@gmail.com</p>
-      <p>
-        <strong>WhatsApp:</strong>
-        <a
-          href="https://wa.me/918217816168?text=Hello%2C%20I%20want%20to%20inquire%20about%20Properties."
-          target="_blank"
-          rel="noopener noreferrer"
-          class="whatsapp-btn"
-          >Chat with us on WhatsApp</a
-        >
-      </p>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 Vrishaba Properties - Hassan. All rights reserved.</p>
-  </footer>
+    <p>📞 Call: +91 8217816168</p>
+    <p>📍 Location: Hassan, Karnataka</p>
+    <p>📱 WhatsApp: <a style="color: #ffd700;" href="https://wa.me/918217816168" target="_blank">Chat Now</a></p>
+  </div>
 
   <script>
-    function scrollToSection(event, id) {
-      event.preventDefault();
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    const properties = [
+  {
+        title: "Sl No 1: Site for Sale near Siddhartha Layout, Belur Road",
+        description: "Plot Area: 1586 sqft | Length: 61 ft | Breadth: 26 ft | Facing: South",
+        link: "https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%20site%20for%20sale%20near%20Siddhartha%20Layout%20on%20Belur%20Road%20(Sl%20No%201)%20listed%20on%20Vrishaba%20Properties."
+      },
+      {
+        title: "Sl No 2: Site for Sale in Vijayanagara Badavane, Belur Road, Hassan",
+        description: "Plot Area: 1200 sqft | Length: 30 ft | Breadth: 40 ft | Facing: Utara",
+        link: "https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%20site%20for%20sale%20in%20Vijayanagara%20Badavane%20on%20Belur%20Road%20Hassan%20(Sl%20No%202)%20listed%20on%20Vrishaba%20Properties."
+      },
+      {
+        title: "Sl No 3: Agriculture Land for Sale near Shantigrama, Hassan",
+        description: "Area: 11 Guntas",
+        link: "https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%2011%20Guntas%20agriculture%20land%20for%20sale%20near%20Shantigrama%20Hassan%20(Sl%20No%203)%20listed%20on%20Vrishaba%20Properties."
+      },
+      {
+        title: "Sl No 4: 4BHK House for Sale in Lakshmi Puram Extension, Penshan Mohalla, Hassan",
+        description: "Plot Area: 2000 sqft | 4 Bedrooms | 2 Bathrooms | 1 Balcony<br>Floors: 2 | Property Age: 10+ Years<br>Width of Facing Road: 36.0 Feet<br>Parking: 1 Covered, 1 Open<br>Water Source: Municipal Corporation",
+        link: "https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%204BHK%20house%20for%20sale%20in%20Lakshmi%20Puram%20Extension%2C%20Penshan%20Mohalla%2C%20Hassan%20(Sl%20No%204)%20listed%20on%20Vrishaba%20Properties."
+      },
+      {
+        title: "Sl No 5: House for Sale near Bitgowdanahalli",
+        description: "Site: 23x40 ft | West Facing Plot | Door Facing: North<br>Built-up Area: 1070 sqft<br>Ground Floor: 2 BHK<br>First Floor: 1 Room with Attached Toilet",
+        link: "https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%20house%20for%20sale%20near%20Bitgowdanahalli%20(Sl%20No%205)%20listed%20on%20Vrishaba%20Properties."
+      },
+      {
+        title: "Sl No 6: Site for Sale in Channapattana, Hassan",
+        description: "Plot Area: 2650 sqft (246.19 sq.m.)<br>Dimensions: 75.00 ft (22.86 m) x 35.00 ft (10.67 m)<br>Facing: East | Width of Facing Road: 20.0 Feet",
+        link: "https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%20site%20for%20sale%20in%20Channapattana%2C%20Hassan%20(Sl%20No%206)%20listed%20on%20Vrishaba%20Properties."
+      },
+      {
+        title: "Sl No 7: 4BHK Independent House/Villa for Sale in Penshan Mohalla, Hassan",
+        description: "4 Bedrooms | 2 Bathrooms<br>Total Floors: 2 | Property Age: 0 to 1 Year<br>Location: Penshan Mohalla, Hassan<br>Note: House is under loan, price can be negotiated",
+        link: "https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%204BHK%20independent%20house%20for%20sale%20in%20Penshan%20Mohalla%2C%20Hassan%20(Sl%20No%207)%20listed%20on%20Vrishaba%20Properties.%20Is%20the%20price%20negotiable%3F"
+      },
+      {
+        title: "Sl No 8: Site for Sale in Vishveshwaraya Extension, Hassan",
+        description: "Plot Area: 1800 sqft (30x60 ft)<br>Facing: East | Road Width: 30 ft<br>Location: Vishveshwaraya Extension, Hassan",
+        link: "https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%2030x60%20east%20facing%20site%20for%20sale%20in%20Vishveshwaraya%20Extension%2C%20Hassan%20(Sl%20No%208)%20listed%20on%20Vrishaba%20Properties."
+      }
+];
+
+    
+     
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
     }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("property-container");
+      const shuffled = shuffle([...properties]);
+      shuffled.forEach(property => {
+        const card = document.createElement("div");
+        card.className = "property-card";
+        card.innerHTML = `
+          <h3>${property.title}</h3>
+          <p>${property.description}</p>
+          <a href="${property.link}" target="_blank">📲 Contact on WhatsApp</a>
+        `;
+        container.appendChild(card);
+      });
+    });
   </script>
+
 </body>
 </html>
