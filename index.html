@@ -73,7 +73,6 @@
       display: flex;
       gap: 30px;
       flex-wrap: wrap;
-      overflow-x: auto;
     }
     nav ul li a {
       color: white;
@@ -123,7 +122,7 @@
 
   <nav>
     <div class="nav-left">
-      <img src="1.png" alt="Logo" />
+      <img src="https://lh3.googleusercontent.com/pw/AP1GczODWJq9Zt743p0_c8t_Z4eX92bQ3Z0Y5C7mQ2B1P7p3Q7Q1L3qX7D3R4o_5e2Y4r1Z8Y3W0K7g9mR8e2f-5q-C4-y0Y1U7Y8Q6M8e0R2F6s8e5w0S7Q=s50-no" alt="Logo" />
       <div class="title-container">
         <h1>Vrishabha Properties - Hassan</h1>
         <span>Your Trusted Real Estate Agent in Hassan</span>
@@ -138,9 +137,25 @@
 
   <div id="listings" class="section">
     <h2>Featured Listings</h2>
+    <input
+  type="text"
+  id="search-bar"
+  placeholder="Search properties..."
+  style="
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    display: block;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+"
+/>
+
     <div class="property-container" id="property-container">
-      <!-- Cards will be inserted by JavaScript -->
-    </div>
+      </div>
   </div>
 
   <div id="contact" class="contact-section">
@@ -211,7 +226,25 @@
   title: "Sl No 12: Site for Sale – Dasarakoppalu, Hassan",
   description: "Plot Area: 2080 sqft (32x65 ft)<br>Facing: South <br>Details: Borewell, Electricity, Approved Plan<br>Access: Just 10m from 60ft road, 500m to bus stop<br>Location: Near Rainbow Kids School, Dasarakoppalu, Hassan",
   link: "https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%2032x65%20south%20facing%20site%20for%20sale%20in%20Dasarakoppalu%2C%20Hassan%20(Sl%20No%2012)%20listed%20on%20Vrishaba%20Properties."
+},
+{
+  title: "Sl No 13: Site for Sale – SM Krishna Layout, Hassan",
+  description: "Plot Area: 2000 sqft (40x50 ft)<br>Type: Corner Site in a Prime Location<br>Location: SM Krishna Layout, Hassan<br>",
+  link: "https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%2040x50%20corner%20site%20for%20sale%20in%20SM%20Krishna%20Layout%2C%20Hassan%20(Sl%20No%2013)%20listed%20on%20Vrishaba%20Properties."
+},
+{
+  title: "Sl No 14: Site for Sale – SM Krishna Layout, Hassan",
+  description: "Plot Area: 600 sqft (20x30 ft)<br>Type: Corner Site | Facing: East<br>Location: SM Krishna Layout, Hassan",
+  link: "https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%2020x30%20east%20facing%20corner%20site%20for%20sale%20in%20SM%20Krishna%20Layout%2C%20Hassan%20(Sl%20No%2014)%20listed%20on%20Vrishaba%20Properties."
+},
+{
+  title: "Sl No 15: Site for Sale – SM Krishna Layout, Hassan",
+  description: "Plot Area: 600 sqft (20x30 ft)<br>Facing: East<br>Location: SM Krishna Layout, Hassan",
+  link: "https://wa.me/918217816168?text=Hi%2C%20I%20am%20interested%20in%20the%2020x30%20east%20facing%20site%20for%20sale%20in%20SM%20Krishna%20Layout%2C%20Hassan%20(Sl%20No%2015)%20listed%20on%20Vrishaba%20Properties."
 }
+
+
+
 
 
 
@@ -231,18 +264,47 @@
 
     window.addEventListener("DOMContentLoaded", () => {
       const container = document.getElementById("property-container");
-      const shuffled = shuffle([...properties]);
-      shuffled.forEach(property => {
-        const card = document.createElement("div");
-        card.className = "property-card";
-        card.innerHTML = `
-          <h3>${property.title}</h3>
-          <p>${property.description}</p>
-          <a href="${property.link}" target="_blank">📲 Contact on WhatsApp</a>
-        `;
-        container.appendChild(card);
-      });
+      // Initial render with shuffled properties
+      renderProperties(); 
     });
+
+    // Render Properties
+const propertyContainer = document.getElementById("property-container");
+
+function renderProperties(filter = "") {
+  propertyContainer.innerHTML = "";
+
+  const filtered = properties.filter((property) =>
+    (property.title + " " + property.description).toLowerCase().includes(filter.toLowerCase())
+  );
+
+  if (filtered.length === 0) {
+    propertyContainer.innerHTML = "<p>No properties found.</p>";
+    return;
+  }
+
+  // Shuffle only if no filter is applied
+  const propertiesToRender = filter ? filtered : shuffle([...filtered]);
+
+
+  propertiesToRender.forEach((property) => {
+    const card = document.createElement("div");
+    card.className = "property-card";
+
+    card.innerHTML = `
+      <h3>${property.title}</h3>
+      <p>${property.description}</p>
+      <a href="${property.link}" target="_blank">Contact on WhatsApp</a>
+    `;
+    propertyContainer.appendChild(card);
+  });
+}
+
+// Search Listener
+document.getElementById("search-bar").addEventListener("input", (e) => {
+  renderProperties(e.target.value);
+});
+
   </script>
 
 </body>
